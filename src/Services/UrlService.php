@@ -42,6 +42,14 @@ class UrlService
     /**
      * @throws UrlRepositoryException
      */
+    public static function findByIdentifierWithoutRelation(string $identifier): ?ShortUrl
+    {
+        return UrlRepository::findByIdentifierWithoutRelation($identifier);
+    }
+
+    /**
+     * @throws UrlRepositoryException
+     */
     public static function findByUtmCombination(array $utm_combination): Collection
     {
         return UrlRepository::findByUtmCombination($utm_combination);

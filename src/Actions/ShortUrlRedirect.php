@@ -28,7 +28,7 @@ class ShortUrlRedirect extends Controller
         /**
          * Get Short URL Identifier & Validate
          */
-        if (! $this->shortUrl = UrlService::findByIdentifier($this->identifier)) {
+        if (! $this->shortUrl = UrlService::findByIdentifierWithoutRelation($this->identifier)) {
             /**
              * ShortUrl Identifier does not exists
              */
@@ -36,27 +36,28 @@ class ShortUrlRedirect extends Controller
             return abort(404);
         }
 
+
         /**
          * Activation Validation
          */
-        $this->isShortUrlActivated();
+        //$this->isShortUrlActivated();
 
         /**
          * Expiration Validation
          */
-        $this->isShortUrlExpired();
+        //$this->isShortUrlExpired();
 
         /**
          * If the url has a limit && the urls clicks
          * where successfully routed are greater than or equal to
          * the limit on the url
          */
-        $this->canShortUrlBeOpened();
+        //$this->canShortUrlBeOpened();
 
         /**
          * Protected Short URL Check
          */
-        if ($this->shortUrl->hasPassword()) {
+        if (false && $this->shortUrl->hasPassword()) {
             /**
              * ShortUrl is Password Protected ---
              * Record the click and render the protected view.
